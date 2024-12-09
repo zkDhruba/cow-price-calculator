@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cow Price Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        input, button {
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cow Price Calculator</h1>
+        <label for="years">Enter the number of years:</label>
+        <input type="number" id="years" placeholder="Number of years" />
+        <button onclick="calculatePrice()">Calculate Price</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculatePrice() {
+            const initialPrice = 75000; // Initial price of the cow
+            const reductionRate = 0.10; // 10% reduction rate
+            const years = parseInt(document.getElementById("years").value);
+
+            if (isNaN(years) || years < 0) {
+                document.getElementById("result").innerText = "Please enter a valid number of years.";
+                return;
+            }
+
+            const finalPrice = initialPrice * Math.pow(1 - reductionRate, years);
+            document.getElementById("result").innerText = 
+                `The price of the cow after ${years} years will be approximately ${finalPrice.toFixed(2)} taka`;
+        }
+    </script>
+</body>
+</html>
